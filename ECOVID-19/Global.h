@@ -1,2 +1,2 @@
 #pragma once
-extern int GameHighScore;
+extern int GameScore;

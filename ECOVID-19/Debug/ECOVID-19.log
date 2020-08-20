@@ -1,26 +1,18 @@
-﻿  Game.cpp
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(335,51): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(335,40): warning C4244:  '인수': 'T'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(335,40): warning C4244:         with
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(335,40): warning C4244:         [
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(335,40): warning C4244:             T=unsigned int
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(335,40): warning C4244:         ]
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(346,51): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(346,40): warning C4244:  '인수': 'T'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(346,40): warning C4244:         with
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(346,40): warning C4244:         [
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(346,40): warning C4244:             T=unsigned int
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(346,40): warning C4244:         ]
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(410,38): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(410,27): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(411,44): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(411,31): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(412,47): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(412,33): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(413,41): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(413,29): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(414,35): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(414,25): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(417,51): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Game.cpp(417,39): warning C4244:  '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+﻿  main.cpp
+  Menu.cpp
+C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Menu.cpp(67,77): warning C4244:  '인수': 'double'에서 'T'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Menu.cpp(67,77): warning C4244:         with
+C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Menu.cpp(67,77): warning C4244:         [
+C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Menu.cpp(67,77): warning C4244:             T=float
+C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Menu.cpp(67,77): warning C4244:         ]
+C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Menu.cpp(72,77): warning C4244:  '인수': 'double'에서 'T'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Menu.cpp(72,77): warning C4244:         with
+C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Menu.cpp(72,77): warning C4244:         [
+C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Menu.cpp(72,77): warning C4244:             T=float
+C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Menu.cpp(72,77): warning C4244:         ]
+C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Menu.cpp(77,77): warning C4244:  '인수': 'double'에서 'T'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Menu.cpp(77,77): warning C4244:         with
+C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Menu.cpp(77,77): warning C4244:         [
+C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Menu.cpp(77,77): warning C4244:             T=float
+C:\Users\youth_journey\source\repos\ECOVID-19\ECOVID-19\Menu.cpp(77,77): warning C4244:         ]
   ECOVID-19.vcxproj -> C:\Users\youth_journey\source\repos\ECOVID-19\Debug\ECOVID-19.exe

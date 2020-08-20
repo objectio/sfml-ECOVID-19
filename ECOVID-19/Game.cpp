@@ -42,8 +42,6 @@ int Game::Run(RenderWindow &window) {
 	bool isLeft = false; //왼쪽으로 이동하는지
 	bool isRight = false; //오른쪽으로 이동하는지
 
-	int score = 0;
-
 	//점수 텍스트로 표시
 	Text scoreText;
 	scoreText.setFont(font);
@@ -277,7 +275,7 @@ int Game::Run(RenderWindow &window) {
 		if (startTime.asSeconds() >= 1)
 		{
 			startTime = score_clock.restart();
-			score++;
+			GameScore++;
 		}
 
 		if (gauge.asSeconds() >= 3) {                         
@@ -445,7 +443,7 @@ int Game::Run(RenderWindow &window) {
 		happyGauge.setSize(Vector2f((float)happy * 3.f, 20.f));
 		
 		//점수 업데이트
-		scoreText.setString("Score: " + std::to_string(score));
+		scoreText.setString("Score: " + std::to_string(GameScore));
 
 		window.clear();
 		window.draw(background);
