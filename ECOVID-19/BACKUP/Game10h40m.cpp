@@ -95,38 +95,92 @@ int Game::Run(RenderWindow& window)
 	happyIcon.setScale(Vector2f(1.1f, 1.1f));
 	happyIcon.setPosition(535.f, 555.f);
 
-	Texture bomb1;
-	bomb1.loadFromFile("images/bomb.png");
+	//폭탄1
+	Texture bombTex;
+	bombTex.loadFromFile("images/bomb.png");
+	Sprite bomb;
+	bomb.setTexture(bombTex);
+	bomb.setScale(Vector2f(1.0f, 0.9f));
 
-	//케이크
-	Texture cake;
-	cake.loadFromFile("images/cake.png");
+	//폭탄2
+	Texture bomb2Tex;
+	bomb2Tex.loadFromFile("images/bomb_2.png");
+	Sprite bomb_2;
+	bomb_2.setTexture(bomb2Tex);
+	bomb_2.setScale(Vector2f(1.0f, 0.9f));
 
 	//커피
-	Texture coffee;
-	coffee.loadFromFile("images/coffee.png");
+	Texture coffeeTex;
+	coffeeTex.loadFromFile("images/coffee.png");
+	Sprite coffee;
+	coffee.setTexture(coffeeTex);
+	coffee.setScale(Vector2f(0.9f, 0.7f));
+
+	//케이크
+	Texture cakeTex;
+	cakeTex.loadFromFile("images/cake.png");
+	Sprite cake;
+	cake.setTexture(cakeTex);
+	cake.setScale(Vector2f(0.9f, 0.7f));
 
 	//치킨
-	Texture chicken;
-	chicken.loadFromFile("images/chicken.png");
+	Texture chickenTex;
+	chickenTex.loadFromFile("images/chicken.png");
+	Sprite chicken;
+	chicken.setTexture(chickenTex);
+	chicken.setScale(Vector2f(0.9f, 0.7f));
 
 	//피자
-	Texture pizza;
-	pizza.loadFromFile("images/pizza.png");
+	Texture pizzaTex;
+	pizzaTex.loadFromFile("images/pizza.png");
+	Sprite pizza;
+	pizza.setTexture(pizzaTex);
+	pizza.setScale(Vector2f(0.9f, 0.7f));
 
 	//택배상자
-	Texture box;
-	box.loadFromFile("images/box.png");
-	
-	int itemGroup = 0;
-	int itemCheck = 2;
+	Texture boxTex;
+	boxTex.loadFromFile("images/box.png");
+	Sprite box;
+	box.setTexture(boxTex);
+	box.setScale(Vector2f(0.9f, 0.9f));
 
-	Sprite item;
-	item.setScale(Vector2f(0.9f, 0.9f));
-	vector<Sprite> items;
-	items.push_back(Sprite(item));
-	int boxSpawnTimer = 15;
+	//아이템 배열
+	Sprite item[20];
+	item[0] = bomb;
+	item[1] = cake;
+	item[2] = coffee;
+	item[3] = bomb_2;
+	item[4] = chicken;
+	item[5] = pizza;
+	item[6] = box;
 
+	std::vector<Sprite> items;
+	items.push_back(Sprite(item[6]));
+
+	//Sprite Healtem[2];
+	//Healtem[0] = tree;
+	//Healtem[1] = leaf;
+
+	//std::vector<Sprite> Healtems;
+	//Healtems.push_back(Sprite(Healtem[2]));
+
+	//
+	int bombSpawnTimer = 0;
+	//케이크 생성 타이머(초기)
+	int cakeSpawnTimer = 80;
+	//커피 생성 타이머(초기)
+	int coffeeSpawnTimer = 160;
+
+	//
+	int bomb2SpawnTimer = 0;
+	//치킨, 피자, 상자 생성 타이머(초기)
+	int chickenSpawnTimer = 400;
+	int pizzaSpawnTimer = 200;
+	int boxSpawnTimer = 300;  //숫자
+
+	//나무, 잎사귀 생성 타이머(초기)
+	//int treeSpawnTimer = 160;
+	//int leafSpawnTimer = 300;
 
 		// 쓰레기
 	Texture garbageTex1;
@@ -197,6 +251,8 @@ int Game::Run(RenderWindow& window)
 	hpBar.setPosition(200.f, 10.f);                                 //게이지 위치좌표는 200px, 10px
 
 	//배경 입히기
+	/* backgroundImage background;
+	background.init(); */
 	Sprite background;
 	Texture cafe;
 	cafe.loadFromFile("images/coffeehouse.png");
@@ -253,6 +309,7 @@ int Game::Run(RenderWindow& window)
 			happy = happy - 5;
 		}
 
+		/*       */
 		Time SwitchingTime = switch_clock.getElapsedTime();
 		if (SwitchingTime.asSeconds() >= 12) {
 			SwitchingTime = switch_clock.restart();
@@ -262,46 +319,115 @@ int Game::Run(RenderWindow& window)
 		//맵 바뀔 때마다 아이템 바뀌도록 설정.
 		if (activeBackground % 2 == 1)
 		{
-			//itemCheck++;
 			background.setTexture(house);
 			earthHpText.setFillColor(Color::Black); //글씨 색깔 바꿔줌.
-			
-			if (itemCheck == 1) {
-				item.setTexture(chicken);
-				itemCheck = 2;
+			item[0].setPosition(-100.f, 0.f);
+			item[1].setPosition(-100.f, 0.f);
+			item[2].setPosition(-100.f, 0.f);
+
+			//아이템(폭탄2, 치킨, 피자, 상자) 이동
+
+			item[3].move(-9.0f, 0.f);  //♥숫자
+			item[4].move(-6.0f, 0.f);  //♥숫자
+			item[5].move(-7.5f, 0.f);  //♥숫자
+			item[6].move(-10.5f, 0.f);
+
+			//폭탄2 생성 타이머
+			if (bomb2SpawnTimer < 100)
+				bomb2SpawnTimer++;
+
+			if (bomb2SpawnTimer >= 100)
+			{
+				item[3].setPosition((float)window.getSize().x, (float)(rand() % 250 + 100));//♥rand 뒤에 숫자만 수정하기
+				items.push_back(Sprite(item[3]));
+				bomb2SpawnTimer = 0; //초기화
 			}
 
-			else if (itemCheck == 2) {
-				item.setTexture(pizza);
-				itemCheck = 3;
+
+			//치킨 생성 타이머
+			if (chickenSpawnTimer < 808)
+				chickenSpawnTimer++;
+
+			if (chickenSpawnTimer >= 808)
+			{
+				item[4].setPosition((float)window.getSize().x, (float)(rand() % 270 + 200)); //♥rand 뒤에 숫자만 수정하기
+				items.push_back(Sprite(item[4]));
+				chickenSpawnTimer = 400; //초기화
 			}
 
-			else if (itemCheck == 3) {
-				item.setTexture(box);
-				itemCheck = 1;
+			//피자 생성 타이머
+			if (pizzaSpawnTimer < 408)
+				pizzaSpawnTimer++;
+
+			if (pizzaSpawnTimer >= 408)
+			{
+				item[5].setPosition((float)window.getSize().x, (float)(rand() % 290 + 150)); //♥rand 뒤에 숫자만 수정하기
+				items.push_back(Sprite(item[5]));
+				pizzaSpawnTimer = 200; //초기화
+			}
+
+			//상자 생성 타이머
+			if (boxSpawnTimer < 608)
+				boxSpawnTimer++;
+
+			if (boxSpawnTimer >= 608)
+			{
+				item[6].setPosition((float)window.getSize().x, (float)(rand() % 240 + 230));//♥rand 뒤에 숫자만 수정하기
+				items.push_back(Sprite(item[6]));
+				boxSpawnTimer = 300; //초기화
 			}
 
 		}
+		//
 		else if (activeBackground % 2 == 0)
 		{
-		
 			background.setTexture(cafe);
 			earthHpText.setFillColor(Color::White); //글씨 색깔 바꿔줌.
-			if (itemCheck == 1) {
-				item.setTexture(cake);
-				itemCheck = 2;
+
+			item[3].setPosition(-100.f, 0.f);
+			item[4].setPosition(-100.f, 0.f);
+			item[5].setPosition(-100.f, 0.f);
+			item[6].setPosition(-100.f, 0.f);
+
+
+			item[0].move(-9.0f, 0.f);//♥숫자만 수정하기
+			item[1].move(-7.5f, 0.f);//♥숫자만 수정하기
+			item[2].move(-8.0f, 0.f);
+
+			//폭탄1 생성 타이머
+			if (bombSpawnTimer < 100)
+				bombSpawnTimer++;
+
+			if (bombSpawnTimer >= 100)
+			{
+				item[0].setPosition((float)window.getSize().x, (float)(rand() % 280 + 215));//♥rand 뒤에 숫자만 수정하기
+				items.push_back(Sprite(item[0]));
+				bombSpawnTimer = 0; //초기화
 			}
 
-			else if (itemCheck == 2) {
-				item.setTexture(coffee);
-				itemCheck = 3;
+
+			//케이크 생성 타이머
+			if (cakeSpawnTimer < 268)
+				cakeSpawnTimer++;
+
+			if (cakeSpawnTimer >= 268)
+			{
+				item[1].setPosition((float)window.getSize().x, (float)(rand() % 270 + 150));//♥rand 뒤에 숫자만 수정하기
+				items.push_back(Sprite(item[1]));
+				cakeSpawnTimer = 80; //초기화
 			}
 
-			else if (itemCheck == 3) {
-				item.setTexture(bomb1);
-				itemCheck = 1;
+			//커피 생성 타이머
+			if (coffeeSpawnTimer < 368)
+				coffeeSpawnTimer++;
+
+			if (coffeeSpawnTimer >= 368)
+			{
+				item[2].setPosition((float)window.getSize().x, (float)(rand() % 250 + 210));//♥rand 뒤에 숫자만 수정하기(이거 cake껄로 숫자 넣기)
+				items.push_back(Sprite(item[2]));
+				coffeeSpawnTimer = 160; //초기화
 			}
-		}
+		}  // 여기까지
 		Event event;
 		window.pollEvent(event);
 
@@ -318,29 +444,49 @@ int Game::Run(RenderWindow& window)
 		if (satiety <= 0 && happy <= 0)
 			return 3;
 
-		//상자 이동
-		for (size_t i = 0; i < items.size(); i++)
+
+		/*Event event;
+		while (window.pollEvent(event))
 		{
-			items[i].move(-7.0f, 0.f);
+			if(event.type == Event::KeyReleased)
+				switch (event.key.code)
+				{
+				case Keyboard::Up:
+					menu.MoveUp();
+					break;
 
-			if (items[i].getPosition().x < 0 - item.getGlobalBounds().width)
-				items.erase(items.begin() + i);
-		}
+				case Keyboard::Down:
+					menu.MoveDown();
+					break;
 
-		if (boxSpawnTimer < 50)
-			boxSpawnTimer++;
+				case Keyboard::Return:
+					switch (menu.GetPressedItem())
+					{
+					case 0:
+						cout << "start button has been pressed" << endl;
+						break;
 
-		if (boxSpawnTimer >= 50)
-		{
-			item.setPosition(window.getSize().x, rand() % 250 + 100);
-			items.push_back(Sprite(item));
-			boxSpawnTimer = 0;
-		}
+					case 1:
+						cout << "explain button has been pressed" << endl;
+						break;
+
+					case 2:
+						window.close();
+						break;
+					}
+
+					break;
+				}
+				break;
+			if (event.type == Event::Closed)
+				window.close();
+		}*/
+
 
 		//충돌
 		for (size_t i = 0; i < items.size(); i++)
 		{
-			if (humanArr[index].getGlobalBounds().intersects(items[i].getGlobalBounds()))
+			if (humanArr[index].getGlobalBounds().intersects(item[i].getGlobalBounds()))
 			{
 				earthHp--;
 				satiety++;
@@ -357,7 +503,25 @@ int Game::Run(RenderWindow& window)
 			}
 		}
 
-		
+
+		/*for (size_t i = 0; i < Healtems.size(); i++)
+		{
+			if (humanArr[index].getGlobalBounds().intersects(Healtem[i].getGlobalBounds()))
+			{
+				earthHp++;
+				Healtems.erase(Healtems.begin() + i);
+
+				if (satiety >= 100)
+					satiety = satietyMax;
+
+				if (happy >= 100)
+					happy = happyMax;
+
+				if (earthHp >= 100)
+					earthHp = hpMax;
+			}
+		}*/
+
 		if (satiety < 0)
 			satiety = satietyMin; //만족감이 0보다 작아지면 0을 넘어가지 않도록 한도 설정.
 		if (happy < 0)
@@ -478,7 +642,7 @@ int Game::Run(RenderWindow& window)
 		window.draw(humanArr[index]);
 		for (size_t i = 0; i < items.size(); i++)
 		{
-			window.draw(items[i]);
+			window.draw(item[i]);
 		}
 		window.draw(hpBar);
 		window.draw(earthHpText);
