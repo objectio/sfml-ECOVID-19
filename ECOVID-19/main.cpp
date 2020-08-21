@@ -32,6 +32,6 @@ int main(int argc, char** argv)
 	{
 		screen = Screens[screen]->Run(window);
 	}
-
+	system("pause");
 	return EXIT_SUCCESS;
 }
