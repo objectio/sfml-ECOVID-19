@@ -11,8 +11,14 @@ struct Position
 	float y;
 };
 
+
 int Game::Run(RenderWindow& window)
 {
+	Music music;
+	if (!music.openFromFile("Hot-Coffee.ogg"))
+		return -1;
+	music.play();
+
 	// 플레이어 
 	Texture t1;
 	Texture t2;
@@ -313,10 +319,14 @@ int Game::Run(RenderWindow& window)
 			return 0;
 		}
 
-		if (earthHp <= 0)
+		if (earthHp <= 0) {
+			music.stop();
 			return 3;
-		if (satiety <= 0 && happy <= 0)
+		}
+		if (satiety <= 0 && happy <= 0) {
+			music.stop();
 			return 3;
+		}
 
 		//상자 이동
 		for (size_t i = 0; i < items.size(); i++)
@@ -489,15 +499,15 @@ int Game::Run(RenderWindow& window)
 		window.draw(happyIcon);
 		window.draw(scoreText);
 
-		if (CollisionTime >= 10) window.draw(Garbages[0]);
-		if (CollisionTime >= 20) window.draw(Garbages[1]);
-		if (CollisionTime >= 30) window.draw(Garbages[2]);
-		if (CollisionTime >= 40) window.draw(Garbages[3]);
-		if (CollisionTime >= 50) window.draw(Garbages[4]);
-		if (CollisionTime >= 60) window.draw(Garbages[5]);
-		if (CollisionTime >= 70) window.draw(Garbages[6]);
-		if (CollisionTime >= 80) window.draw(Garbages[7]);
-		if (CollisionTime >= 90) window.draw(Garbages[8]);
+		if (CollisionTime >= 15) window.draw(Garbages[0]);
+		if (CollisionTime >= 30) window.draw(Garbages[1]);
+		if (CollisionTime >= 45) window.draw(Garbages[2]);
+		if (CollisionTime >= 60) window.draw(Garbages[3]);
+		if (CollisionTime >= 75) window.draw(Garbages[4]);
+		if (CollisionTime >= 90) window.draw(Garbages[5]);
+		if (CollisionTime >= 105) window.draw(Garbages[6]);
+		if (CollisionTime >= 120) window.draw(Garbages[7]);
+		if (CollisionTime >= 135) window.draw(Garbages[8]);
 		window.display();
 
 	}

@@ -84,7 +84,7 @@ int Menu::Run(sf::RenderWindow& window)
 		while (window.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
-				return (-1);
+				window.close();
 			
 			if (event.type == sf::Event::KeyReleased)
 				switch (event.key.code)
@@ -119,11 +119,7 @@ int Menu::Run(sf::RenderWindow& window)
 					break;
 				}
 			break;
-			
-			if (event.type == sf::Event::Closed)
-			{
-				return -1;
-			}
+		
 		}
 		if (alpha < alpha_max)
 		{
