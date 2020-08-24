@@ -25,8 +25,10 @@ int main(int argc, char** argv)
 	Screens.push_back(&s1);
 	Explain s2;
 	Screens.push_back(&s2);
-	GameOver s3;
+	HighScore s3;
 	Screens.push_back(&s3);
+	GameOver s4;
+	Screens.push_back(&s4);
 
 	while (screen >= 0)
 	{

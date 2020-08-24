@@ -1,6 +1,7 @@
 #include "HighScore.h"
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 #include <vector>
 
 using namespace std;
@@ -48,7 +49,8 @@ int HighScore::Run(sf::RenderWindow& window)
 	ScoreBackTexture.loadFromFile("images/Score.png");
 	Sprite ScoreBackground;
 	ScoreBackground.setTexture(ScoreBackTexture);
-
+	ScoreBackground.setPosition(0, 0);
+	
 	string line;
 	ifstream HighScoreFile("HighScores.txt");
 	while (!HighScoreFile.eof())
@@ -57,7 +59,7 @@ int HighScore::Run(sf::RenderWindow& window)
 		High_Scores.push_back(playerName);
 	}
 	HighScoreFile.close();
-
+	
 	sort(High_Scores.begin(), High_Scores.end(), sortByScore);
 	for (High_Score& n : High_Scores)
 	{
@@ -67,23 +69,21 @@ int HighScore::Run(sf::RenderWindow& window)
 		HighScoreSorted.push_back(Score);
 		NamesSorted.push_back(Name);
 	}
-
+	
 	Title.setFont(font);
 	Title.setCharacterSize(40);
 	Title.setString("High Scores");
-	Title.setPosition(window.getSize().x / 4, window.getSize().y / 9);
-	Title.setFillColor(Color());
+	Title.setPosition(360.f, 50.f);
 
 	Exit.setFont(font);
 	Exit.setCharacterSize(30);
-	Exit.setString("Exit");
-	Exit.setPosition(window.getSize().x / 2.3, window.getSize().y / 1.2);
-	Title.setFillColor(Color());
+	Exit.setString("Start");
+	Exit.setPosition(430.f, window.getSize().y / 1.2);
 
-	float y = (window.getSize().y / 3);
-	float x = (window.getSize().y / 3);
-
-	High_Scores.resize(15);
+	float y = (window.getSize().y / 3.95);
+	float x = (window.getSize().x / 6);
+	
+	High_Scores.resize(10);
 
 	for (size_t i = 0; i < High_Scores.size(); i++)
 	{
@@ -97,19 +97,19 @@ int HighScore::Run(sf::RenderWindow& window)
 	{
 		HighScoreSorted[i].setFont(font);
 		HighScoreSorted[i].setCharacterSize(24);
-		HighScoreSorted[i].setPosition(window.getSize().x / 1.33, x);
-		HighScoreSorted[i].setFillColor(Color(255, 0, 0, 255));
+		HighScoreSorted[i].setPosition(window.getSize().x / 1.67, x);
+		HighScoreSorted[i].setFillColor(Color(13, 53, 106, 255));
 		x += 34;
 	}
 	for (size_t i = 0; i < NamesSorted.size(); i++)
 	{
 		NamesSorted[i].setFont(font);
 		NamesSorted[i].setCharacterSize(24);
-		NamesSorted[i].setPosition(window.getSize().x / 7, y);
-		NamesSorted[i].setFillColor(Color(255, 0, 0, 255));
+		NamesSorted[i].setPosition(window.getSize().x / 2.6, y);
+		NamesSorted[i].setFillColor(Color(13, 53, 106, 255));
 		y += 34;
 	}
-
+	
 	while (Running)
 	{
 		while (window.pollEvent(event))
@@ -117,7 +117,7 @@ int HighScore::Run(sf::RenderWindow& window)
 			// Window closed
 			if (event.type == sf::Event::Closed)
 			{
-				return (-1);
+				window.close();
 			}
 			//Key pressed
 			if (event.type == sf::Event::KeyPressed)
@@ -134,17 +134,23 @@ int HighScore::Run(sf::RenderWindow& window)
 		}
 		if (alpha < alpha_max)
 		{
-			alpha++;
+			alpha = alpha + 5;
 		}
-
+		ScoreBackground.setColor(Color(255, 255, 255, alpha / alpha_div));
+		window.clear();
+		window.draw(ScoreBackground);
 		window.draw(Title);
-		window.draw(Exit);
-		/*for (int i = 0; i < 15; i++)
-		{
-			window.draw(HighScoreSorted[i]);
-			window.draw(NamesSorted[i]);
+		if (alpha == alpha_max) {
+			window.draw(Exit);
+			for (int i = 0; i < 10; i++)
+			{
+				window.draw(HighScoreSorted[i]);
+				window.draw(NamesSorted[i]);
+			}
 		}
+		
 		window.display();
-	}*/
+		
+	}
 	return (-1);
 }

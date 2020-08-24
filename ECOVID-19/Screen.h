@@ -8,6 +8,7 @@
 #include "Menu.h"
 #include "Game.h"
 #include "Explain.h"
+#include "HighScore.h"
 #include "GameOver.h"
 
 #endif

@@ -28,7 +28,7 @@ void Menu::MoveUp()
 	{
 		menu[selectedItemIndex].setFillColor(sf::Color::White);
 		selectedItemIndex--;
-		menu[selectedItemIndex].setFillColor(sf::Color::Cyan);
+		menu[selectedItemIndex].setFillColor(sf::Color(29, 47, 87, 255));
 	}
 }
 
@@ -38,7 +38,7 @@ void Menu::MoveDown()
 	{
 		menu[selectedItemIndex].setFillColor(sf::Color::White);
 		selectedItemIndex++;
-		menu[selectedItemIndex].setFillColor(sf::Color::Cyan);
+		menu[selectedItemIndex].setFillColor(sf::Color(29, 47, 87, 255));
 	}
 }
 
@@ -48,6 +48,13 @@ int Menu::Run(sf::RenderWindow& window)
 	bool Running = true;
 	sf::Font font;
 	int alpha = 0;
+	sf::Text ECOVID;
+	ECOVID.setFont(font);
+	ECOVID.setCharacterSize(40);
+	ECOVID.setStyle(sf::Text::Bold);
+	ECOVID.setString("E  C  O  V  I  D  -  1  9");
+	ECOVID.setPosition(190.f, 30.f);
+	ECOVID.setFillColor(sf::Color(237, 237, 182, 255));
 
 	sf::Texture menuTex;
 	menuTex.loadFromFile("images/Menu.png");
@@ -62,19 +69,33 @@ int Menu::Run(sf::RenderWindow& window)
 	}
 
 	menu[0].setFont(font);
-	menu[0].setFillColor(sf::Color::Cyan);
+	menu[0].setStyle(sf::Text::Bold);
+	menu[0].setFillColor(sf::Color(29, 47, 87, 255));
 	menu[0].setString("Play");
-	menu[0].setPosition(sf::Vector2f(430.f, height / (MAX_NUMBER_OF_ITEMS + 1) * 1.35));
+	menu[0].setCharacterSize(35);
+	menu[0].setPosition(sf::Vector2f(430.f, height / (MAX_NUMBER_OF_ITEMS + 1) * 1.6));
 
 	menu[1].setFont(font);
+	menu[1].setStyle(sf::Text::Bold);
 	menu[1].setFillColor(sf::Color::White);
 	menu[1].setString("Explain");
-	menu[1].setPosition(sf::Vector2f(430.f, height / (MAX_NUMBER_OF_ITEMS + 1) * 1.85));
+	menu[1].setCharacterSize(35);
+	menu[1].setPosition(sf::Vector2f(410.f, height / (MAX_NUMBER_OF_ITEMS + 1) * 2.1));
 
 	menu[2].setFont(font);
+	menu[2].setStyle(sf::Text::Bold);
 	menu[2].setFillColor(sf::Color::White);
-	menu[2].setString("Exit");
-	menu[2].setPosition(sf::Vector2f(430.f, height / (MAX_NUMBER_OF_ITEMS + 1) * 2.35));
+	menu[2].setString("Score");
+	menu[2].setCharacterSize(35);
+	menu[2].setPosition(sf::Vector2f(425.f, height / (MAX_NUMBER_OF_ITEMS + 1) * 2.6));
+
+	menu[3].setFont(font);
+	menu[3].setStyle(sf::Text::Bold);
+	menu[3].setFillColor(sf::Color::White);
+	menu[3].setString("Exit");
+	menu[3].setCharacterSize(35);
+	menu[3].setPosition(sf::Vector2f(430.f, height / (MAX_NUMBER_OF_ITEMS + 1) * 3.1));
+	//menu[2].setPosition(sf::Vector2f(430.f, height / (MAX_NUMBER_OF_ITEMS + 1) * 2.35));
 
 	selectedItemIndex = 0;
 
@@ -112,6 +133,10 @@ int Menu::Run(sf::RenderWindow& window)
 						break;
 
 					case 2:
+						return (3);
+						break;
+
+					case 3:
 						window.close();
 						break;
 					}
@@ -129,6 +154,7 @@ int Menu::Run(sf::RenderWindow& window)
 
 		window.clear();
 		window.draw(menuBackground);
+		window.draw(ECOVID);
 		if (alpha == alpha_max) {
 			draw(window);
 		}
