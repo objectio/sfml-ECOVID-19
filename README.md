@@ -1,7 +1,7 @@
 # ECOVID-19
 2020년도 소프트웨어 경진대회 출품작 (장려상 수상) <br>
 <br>
-![](https://github.com/objectio/sfml-ECOVID-19/blob/master/ECOVID-19/images/Menu.PNG?raw=true)
+![](https://github.com/objectio/sfml-ECOVID-19/blob/master/README/%EC%9D%B8%ED%8A%B8%EB%A1%9C.jpg?raw=true)
  * 사용 언어: C++, 부분 C언어로 구현, SFML 라이브러리
  * 개발 툴: Dev-C++, Visual Studio 2019 Community
  * 디자인 툴: 프로크리에이트, Adobe Photoshop C
@@ -18,10 +18,22 @@
  - 사람 모습의 게임 캐릭터를 점프키로 조작하여 플레이하는 게임이다. 이 캐릭터는 현대인을 투영한다.
  - 집, 카페 등 현대인이 머물거나 방문하는 장소들을 게임에 구현하고, 그 장소에서 하는 일을 게임 내에 구현해 시각적으로 보여줌으로써 일상생활 속에서 우리가 미처 신경쓰지 못했던 쓰레기들이 얼마나 많이 발생하고 있는지 인지시킨다.
  - 점프키를 이용해 캐릭터에게 필요한 물품을 먹는다. 배고픔, 행복감 등의 게이지(이하 생체게이지라고 명명)가 0%가 되지 않도록 필요한 아이템을 드랍해야한다. 집 맵에 들어가게 되면 배달음식, 과자 등의 아이템이 생성되며 카페일 경우 커피, 디저트 등의 아이템이 나온다.
- - 맵에서 아이템을 먹으면 해당 아이템으로부터 쓰레기가 나와 누적된다. 예를 들어 카페 맵에서 커피 아이템을 먹을 경우 일회용 빨대, 일회용 용기 등이 누적되며 배달음식은 비닐봉지와 플라스틱 용기, 나무젓가락 등이 누적되는 식이다. 
+ - 맵에서 아이템을 먹으면 해당 아이템으로부터 쓰레기가 나와 누적된다. 예를 들어 카페 맵에서 커피 아이템을 먹을 경우 일회용 빨대, 일회용 용기 등이 누적되며 배달음식은 비닐봉지와 플라스틱 용기, 나무젓가락 등이 누적되는 식이다.
+ ![](https://github.com/objectio/sfml-ECOVID-19/blob/master/README/disturbance.jpg?raw=true)
  - 쓰레기의 누적량이 많아질수록 최상단에 게이지로 구현된 지구의 HP가 줄어든다. HP게이지가 0이 되면 게임 오버가 된다. 
  - 캐릭터의 생체게이지와 지구의 HP게이지가 0으로 떨어지지 않도록 밸런스를 맞춰 유지하면서 최대한 오랫동안 게임 오버 되지 않도록 플레이하는 게임이다.
+ ![](https://github.com/objectio/sfml-ECOVID-19/blob/master/README/%EA%B2%8C%EC%9E%84%20%EB%B0%A9%EB%B2%95%20%EC%86%8C%EA%B0%9C.JPG?raw=true)
+ <br>
  
+ ## 플레이 씬 이외의 게임 씬
+ #### 게임 오버 창
+ ![](https://github.com/objectio/sfml-ECOVID-19/blob/master/README/game%20over.jpg?raw=true)
+ <br>
+ <br>
+ #### 최고 점수 확인 창
+ ![](https://github.com/objectio/sfml-ECOVID-19/blob/master/README/highscore.jpg?raw=true)
+ <br>
+ <br>
  <br>
  
  ## 추진방법 및 일정
@@ -36,6 +48,8 @@
  
  #### 20/08/12 ~ 20/08/16
  게임파일들을 패키징하여 실행파일 형식으로 만들어 배포 및 제출할 준비를 마친다. 게임을 구성하는데 필요했던 파일들과 게임 exe프로그램을 압축해서 제출할 예정이다.
+ <br>
+ <br>
  <br>
  
  ## 작품 활용도 및 기대효과
